@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>WalterJ726</title>
+
+
+    <meta name="description" content="1001 qw的字符串1234567891011121314151617181920212223242526272829303132Time Limit: 3000/1000 MS (Java/Others)    Memory Limit: 65535/32768 K (Java/Others)Total Submission(s): 0    Accepted Submission(s): 0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WalterJ726">
+<meta property="og:url" content="http://yoursite.com/2019/11/23/杭电校赛题面/index.html">
+<meta property="og:site_name" content="WalterJ726">
+<meta property="og:description" content="1001 qw的字符串1234567891011121314151617181920212223242526272829303132Time Limit: 3000/1000 MS (Java/Others)    Memory Limit: 65535/32768 K (Java/Others)Total Submission(s): 0    Accepted Submission(s): 0">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-23T08:47:49.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WalterJ726">
+<meta name="twitter:description" content="1001 qw的字符串1234567891011121314151617181920212223242526272829303132Time Limit: 3000/1000 MS (Java/Others)    Memory Limit: 65535/32768 K (Java/Others)Total Submission(s): 0    Accepted Submission(s): 0">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/WalterJ726">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-23T08:38:02.730Z">2019-11-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    27 minutes read (About 3983 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h1 id="1001-qw的字符串"><a href="#1001-qw的字符串" class="headerlink" title="1001 qw的字符串"></a>1001 qw的字符串</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">qw是杭电ACM集训队实力非常强的一位选手，他喜欢思考各种各样的算法题。qw很喜欢<span class="hljs-string">"belt"</span>这个单词，希望你能在下面这个问题帮帮他。</span><br><span class="line">给定一个字符串（只包含大小写字母和空格），如果包含独立的单词 <span class="hljs-string">"belt"</span>（不区分大小写，不能作为某个单词的子串），则输出 <span class="hljs-string">"Yes"</span>，否则输出 <span class="hljs-string">"No"</span>。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行一个正整数T，代表有T组数据。(<span class="hljs-number">1</span>≤T≤<span class="hljs-number">100</span>)</span><br><span class="line">接下来T行，每行一个字符串，只包含大小写字母和空格，其中字符串长度不大于<span class="hljs-number">1000</span>。</span><br><span class="line">提示：单词间可能有多个空格，也可能存在首尾空格</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">输出T行，代表T组数据的结果。</span><br><span class="line">如果字符串包含独立的单词 <span class="hljs-string">"belt"</span>，输出 <span class="hljs-string">"Yes"</span>。</span><br><span class="line">否则输出 <span class="hljs-string">"No"</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">3</span></span><br><span class="line">There iS A beLT	</span><br><span class="line">A belt is over there</span><br><span class="line">I will run mybelt</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">No</span><br></pre></td></tr></table></figure>
+
+<h1 id="1002-s10的面试"><a href="#1002-s10的面试" class="headerlink" title="1002 s10的面试"></a>1002 s10的面试</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">s10曾经是一位ACM集训队的同学，实力强劲，秒天秒地。面临毕业的他正在找工作，最近有n个公司向s10发出了面试邀请！但s10每天只想参加一场面试。对于第i个公司的面试，会有一个最晚面试时间ti，s10心中对于这个公司也会有一个自己的打分si。</span><br><span class="line"></span><br><span class="line">因为简历投的多，s10拥有大量的面试机会，现在s10希望通过合理安排面试，使得参与面试的公司总分最大，你能帮帮他吗？</span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"><span class="hljs-number">1.</span> 可以面试的最早时间为第<span class="hljs-number">1</span>天，最晚时间为第n天。</span><br><span class="line"><span class="hljs-number">2.</span> 对于第i个公司，如果错过了最晚面试时间ti，即第ti+<span class="hljs-number">1</span>天及以后，则不能再参加该公司的面试。</span><br><span class="line"><span class="hljs-number">3.</span> 每天最多只能选择参加一场面试，每场面试均能当天结束，不会影响后面天数的选择。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">多组数据</span><br><span class="line"></span><br><span class="line">每组数据第一行一个正整数n (n≤<span class="hljs-number">1000</span>)</span><br><span class="line"></span><br><span class="line">接下来n行，每行<span class="hljs-number">2</span>个正整数ti, si (<span class="hljs-number">1</span>≤ti,si≤<span class="hljs-number">1000</span>)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">每组数据输出占一行，输出s10的最大总分</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">7</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">60</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">70</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">40</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">30</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">50</span></span><br><span class="line"><span class="hljs-number">6</span> <span class="hljs-number">10</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">230</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1003-s10的游戏王卡牌"><a href="#1003-s10的游戏王卡牌" class="headerlink" title="1003 s10的游戏王卡牌"></a>1003 s10的游戏王卡牌</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">最近s10迷上了一款叫《游戏王》的卡牌游戏，简单的介绍一下这一款游戏的规则：</span><br><span class="line"><span class="hljs-number">1.</span> 卡牌分成魔法卡和怪兽卡两种</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span> 魔法卡能直接摧毁对方场上的一只怪兽</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">3.</span> 怪兽卡拥有攻击力A和星级S</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">4.</span> 每回合玩家可以将手牌中的一只怪兽召唤到场上，召唤方式有三种：</span><br><span class="line"><span class="hljs-number">4.1</span>. 直接召唤一只<span class="hljs-number">4</span>星级及以下的怪兽</span><br><span class="line"><span class="hljs-number">4.2</span>. 牺牲一只己方场上的怪兽，召唤一只<span class="hljs-number">5</span><span class="hljs-number">-6</span>星级的怪兽</span><br><span class="line"><span class="hljs-number">4.3</span>. 牺牲两只己方场上的怪兽，召唤一只<span class="hljs-number">7</span><span class="hljs-number">-8</span>星级的怪兽</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">5.</span> 已经被召唤的怪兽将从手牌中扣除，被破坏/牺牲的场上怪兽将会被移出游戏</span><br><span class="line"></span><br><span class="line">s10向卡牌大师qw发起了挑战，s10手中有n张怪兽卡，第i只怪兽的攻击力为Ai，星级为Si，而qw手中有m张魔法卡。qw对s10这个新手很不屑，并表示在前k回合里他都不会使用魔法卡。而在k回合后，qw会一口气用掉所有魔法卡，破坏掉s10场上攻击力最高的m个怪兽。</span><br><span class="line"></span><br><span class="line">而s10的任务就是在前k回合合理召唤怪兽，使得qw用掉魔法卡后，己方场上剩余的怪兽中攻击力最高的那只的攻击力尽量大</span><br><span class="line"></span><br><span class="line">请问如果s10足够聪明，那么那只剩余下来后攻击力最高的怪兽的攻击力是多少？(如果s10所有怪兽都会被破坏/牺牲，那么输出<span class="hljs-number">0</span>)</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">多组输入</span><br><span class="line"></span><br><span class="line">每组数据第一行给定正整数n,m,k</span><br><span class="line"></span><br><span class="line">接下来n行，每行两个整数Ai和Si</span><br><span class="line"></span><br><span class="line">数据范围:</span><br><span class="line"><span class="hljs-number">0</span>≤Ai≤<span class="hljs-number">50000</span></span><br><span class="line"><span class="hljs-number">1</span>≤Si≤<span class="hljs-number">8</span></span><br><span class="line"><span class="hljs-number">1</span>≤n,m≤<span class="hljs-number">100</span></span><br><span class="line">k≤<span class="hljs-number">120</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每个测试实例，请输出s10最后攻击力最高的怪兽的攻击力，每个实例的输出占一行。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">6</span> <span class="hljs-number">2</span> <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-number">500</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">500</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">1500</span> <span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">900</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">2000</span> <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-number">3000</span> <span class="hljs-number">7</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-number">500</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">700</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">1900</span> <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">500</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">700</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">700</span> <span class="hljs-number">3</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">500</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">700</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">700</span> <span class="hljs-number">3</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">1500</span></span><br><span class="line"><span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">700</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1004-s10的加号求和"><a href="#1004-s10的加号求和" class="headerlink" title="1004  s10的加号求和"></a>1004  s10的加号求和</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">给定一个长度为n的数字字符串，现在有m个加号需要被插入到这个字符串里，使其成为一个合法的表达式。</span><br><span class="line"></span><br><span class="line">请求出所有的合法表达式的运算结果之和！因为数据量太大，最后结果只需要对<span class="hljs-number">1000000007</span>取模输出就行。</span><br><span class="line"></span><br><span class="line">合法表达式的规则如下：</span><br><span class="line"><span class="hljs-number">1.</span> 加号不能被放在开头或结尾。</span><br><span class="line"><span class="hljs-number">2.</span> 两个加号之间至少要有一个数字。</span><br><span class="line"></span><br><span class="line">举例：给定字符串<span class="hljs-string">"50050"</span>，加号数量为<span class="hljs-number">2</span>，那么，<span class="hljs-string">"5+00+50"</span>, <span class="hljs-string">"50+0+50"</span>等均合法的，但 <span class="hljs-string">"500++50"</span>, <span class="hljs-string">"+500+50"</span>, <span class="hljs-string">"500+50+"</span>这些是非法的。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">多组数据。</span><br><span class="line">每组数据有两行，第一行有两个整数n和m (<span class="hljs-number">0</span>≤m&lt;n≤<span class="hljs-number">105</span>)，第二行为长度为n的数字字符串。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">每组数据输出一行，输出所有的合法表达式的运算结果的总和。因为结果太大，只需要输出答案对<span class="hljs-number">1000000007</span>取模输出即可。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">108</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">108</span></span><br><span class="line"><span class="hljs-number">5</span> <span class="hljs-number">3</span> </span><br><span class="line"><span class="hljs-number">10008</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">100</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">27</span></span><br><span class="line"><span class="hljs-number">9</span></span><br><span class="line"><span class="hljs-number">45</span></span><br><span class="line"><span class="hljs-number">100</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1005-77姐的保研之路"><a href="#1005-77姐的保研之路" class="headerlink" title="1005  77姐的保研之路"></a>1005  77姐的保研之路</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line"><span class="hljs-number">77</span>姐已经大三了，表示不能向菜鸡czy学习，要向杭电优秀学子dxh学习，保研清华。竞争保研资格需要计算每位同学的保研分数，择高录取，其计算方法为：</span><br><span class="line"></span><br><span class="line">保研分数 = 平均学分绩点 * <span class="hljs-number">100</span> + 专业课平均分 * <span class="hljs-number">0.7</span> + 竞赛加分 * <span class="hljs-number">0.2</span> + 综合素质分。</span><br><span class="line"></span><br><span class="line">现在给定<span class="hljs-number">77</span>姐每门课的情况（课程分数，课程学分，是否为专业课）、竞赛加分、综合素质分和今年的保研录取分数线，计算<span class="hljs-number">77</span>的保研分数能否成功保研（保研分数大于等于录取线分数）？如果能，输出<span class="hljs-string">"Yes"</span>，否则输出<span class="hljs-string">"No"</span>。</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"><span class="hljs-number">1.</span> 专业课平均分为所有专业课的总分数除以专业课数量。</span><br><span class="line"></span><br><span class="line"><span class="hljs-number">2.</span> 平均学分绩点的计算方式为：将所有课程分数（百分制）转换为绩点（满绩点<span class="hljs-number">5.0</span>），对所有课的绩点乘以其学分权重的乘积求和，再除以总学分。</span><br><span class="line"></span><br><span class="line">举例：比如你一共修了两门课，一门是程序设计基础，绩点是<span class="hljs-number">4.5</span>，学分是<span class="hljs-number">4</span>。一门是体育课，绩点是<span class="hljs-number">3</span>，学分是<span class="hljs-number">1</span>。那么你的平均学分绩点是：（<span class="hljs-number">4.5</span>*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>*<span class="hljs-number">1</span>）/（<span class="hljs-number">4</span>+<span class="hljs-number">1</span>）=<span class="hljs-number">4.2</span></span><br><span class="line"></span><br><span class="line">其中课程分数与绩点的转换关系如下：</span><br><span class="line"><span class="hljs-number">95</span><span class="hljs-number">-100</span>分：<span class="hljs-number">5.0</span></span><br><span class="line"><span class="hljs-number">60</span>分及以上且<span class="hljs-number">94</span>分及以下则计算方式为：假设分数为X，则绩点为(X - <span class="hljs-number">45</span>) / <span class="hljs-number">10</span>。例如：分数为<span class="hljs-number">94</span>分，则绩点为（<span class="hljs-number">94</span><span class="hljs-number">-45</span>）/<span class="hljs-number">10</span>=<span class="hljs-number">4.9</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行给出一个正整数T，表示数据组数。</span><br><span class="line">每组数据，第一行给出两个正整数n和K，分别表示<span class="hljs-number">77</span>姐的课程的数量和保研录取分数线。</span><br><span class="line">接下来n行，每行给出三个正整数x,y,z，分别表示课程分数，课程学分和是否是专业课（z=<span class="hljs-number">1</span>表示当前课程是专业课程，z=<span class="hljs-number">0</span>表示为普通课程）。</span><br><span class="line">随后一行两个非负整数u，v，分别代表<span class="hljs-number">77</span>姐的竞赛加分和综合素质分数。</span><br><span class="line"></span><br><span class="line">专业核心课的数量保证至少为<span class="hljs-number">1</span>，保证<span class="hljs-number">77</span>姐无不及格的课程。</span><br><span class="line">数据范围：</span><br><span class="line">n≤<span class="hljs-number">100</span>;K≤<span class="hljs-number">600</span>;<span class="hljs-number">60</span>≤x≤<span class="hljs-number">100</span>;y≤<span class="hljs-number">5</span>;u≤<span class="hljs-number">100</span>,v≤<span class="hljs-number">10</span></span><br><span class="line">z= <span class="hljs-number">0</span>或<span class="hljs-number">1</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每组数据，如果<span class="hljs-number">77</span>姐能保研输出 <span class="hljs-string">"Yes"</span>，否则输出 <span class="hljs-string">"No"</span>。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">3</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">500</span></span><br><span class="line"><span class="hljs-number">90</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">75</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">50</span> <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">510</span></span><br><span class="line"><span class="hljs-number">90</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">75</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">50</span> <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">510</span></span><br><span class="line"><span class="hljs-number">90</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">80</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">50</span> <span class="hljs-number">10</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">Yes</span><br></pre></td></tr></table></figure>
+
+<h1 id="1006-s10的红黑树"><a href="#1006-s10的红黑树" class="headerlink" title="1006  s10的红黑树"></a>1006  s10的红黑树</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">众所周知，红黑树是一种优秀的数据结构，是每个节点都带有颜色属性（红色或者黑色）的二叉查找树。这道题也是关于树上的问题，但是与之不同的是，是每条边有颜色属性，其值为红色或者黑色。</span><br><span class="line">现在有一棵树（无环的无向图），树上有n个节点，n−<span class="hljs-number">1</span>条无向边，每条边是红色或者黑色。同时给定一个正整数k，我们定义序列 a1,a2,…,ak为 <span class="hljs-string">"s10序列"</span>当且仅当其满足以下条件：我们从节点a1开始选择最短的路径到节点a2，再从节点a2开始选择最短的路径到节点a3，依次类推，直到我们从节点ak−<span class="hljs-number">1</span>走到节点ak。如果我们走过的所有路径中经过的边，有至少一条黑色边的话， 那么就称其为”s10序列”。（注意其中对于序列中的不同ai的取值可以重复）</span><br><span class="line"></span><br><span class="line">显然对于n个节点的树，给定正整数k，我们可以有nk个序列。我们现在需要统计其中有多少序列是“S10序列”。答案可能会很大，请输出答案对<span class="hljs-number">1000000007</span>取模的结果。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行给出一个正整数T，表示数据组数。</span><br><span class="line">接下来对于每组数据，第一行给出两个正整数n和k，分别表示这棵树的节点个数和“S10序列”的长度。</span><br><span class="line">接下来n−<span class="hljs-number">1</span>行，每行给出三个正整数x,y,v，分别表示树中一条边的两个节点和边的颜色（<span class="hljs-number">0</span>表示红色，<span class="hljs-number">1</span>表示黑色）。</span><br><span class="line"></span><br><span class="line">数据范围：</span><br><span class="line">k≤n≤<span class="hljs-number">200000</span></span><br><span class="line"><span class="hljs-number">1</span>≤x,y≤n (x 不等于 y)</span><br><span class="line">v= <span class="hljs-number">0</span>或<span class="hljs-number">1</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每组数据，输出“s10序列”的数量对<span class="hljs-number">1000000007</span>取模的结果。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">3</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">2</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">0</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">252</span></span><br><span class="line"><span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">4</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1007-77姐的子串"><a href="#1007-77姐的子串" class="headerlink" title="1007  77姐的子串"></a>1007  77姐的子串</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line"><span class="hljs-number">77</span>姐特别喜欢字符串！而且特别喜欢数字<span class="hljs-string">"8"</span>!作为新生班助，她要交给新生们一个任务，让他们在给定的数字串中，数一数有多少这个数字串的子串，满足条件：该子串所表示的数，是<span class="hljs-number">8</span>的倍数。（小提示：<span class="hljs-number">8</span>的倍数满足除以<span class="hljs-number">8</span>的余数为<span class="hljs-number">0</span>）</span><br><span class="line">其中保证数字串不含数字 <span class="hljs-string">"0"</span>，只含数字 <span class="hljs-string">"1"</span>~<span class="hljs-string">"9"</span>。</span><br><span class="line"></span><br><span class="line">注：子串指字符串中连续若干个字符组成的字符串。</span><br><span class="line">如 <span class="hljs-string">"abc"</span>的所有子串为<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>,<span class="hljs-string">"c"</span>,<span class="hljs-string">"ab"</span>,<span class="hljs-string">"bc"</span>,<span class="hljs-string">"abc"</span>。</span><br><span class="line">而数字串的每一位都是一个数字。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行给定一个整数T，表示有T组数据。</span><br><span class="line">对于每组数据，给出一个数字字符串s。（仅包含数字<span class="hljs-number">1</span><span class="hljs-number">-9</span>）</span><br><span class="line"></span><br><span class="line">数据范围：</span><br><span class="line">T≤<span class="hljs-number">10</span></span><br><span class="line">|s|≤<span class="hljs-number">2000</span></span><br><span class="line">|s|指字符串s的长度</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每组数据，输出一个整数，表示满足题目条件的该数字串的子串的数量。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">1234</span></span><br><span class="line"><span class="hljs-number">1888</span></span><br><span class="line"><span class="hljs-number">8</span></span><br><span class="line"><span class="hljs-number">88</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">7</span></span><br><span class="line"><span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">3</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1008-qw的粉丝"><a href="#1008-qw的粉丝" class="headerlink" title="1008  qw的粉丝"></a>1008  qw的粉丝</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">qw是全民K歌的知名歌手，在杭电有着众多的粉丝。某一天，qw想要正式成立自己的粉丝后援会，需要招收管理人员，于是他在杭电表白墙上发布了信息。一共有n个人报名面试。</span><br><span class="line">面试必须按照报名的顺序依次进行。qw可以选择在面试完若干个粉丝以后，在所有已经面试过的粉丝中任意挑选，组建粉丝后援会管理团队。</span><br><span class="line">但qw对于管理团队有着一个奇怪的要求，他希望组建的团队至少有m名粉丝，且这些粉丝的最高身高和最低身高之差不超过k个长度单位。</span><br><span class="line">现在已知粉丝的身高信息，qw至少要面试多少个粉丝才能在已经面试过的粉丝中选出不少于m个人组建管理团队。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行一个整数T，表示有T组输入数据。 (T≤<span class="hljs-number">10</span>)</span><br><span class="line">每组数据第一行<span class="hljs-number">3</span>个整数n,m,k，意义见题面描述，其中 <span class="hljs-number">1</span>≤m≤n≤<span class="hljs-number">1e5</span>;<span class="hljs-number">0</span>≤k≤<span class="hljs-number">1e5</span></span><br><span class="line">第二行n个整数，第i个整数hi表示第i个报名面试的粉丝身高。<span class="hljs-number">1</span>≤hi≤<span class="hljs-number">1e5</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">如果可以选出管理团队，输出最少需要面试的人数。否则输出 <span class="hljs-string">"impossible"</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-number">6</span> <span class="hljs-number">3</span> <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-number">170</span> <span class="hljs-number">169</span> <span class="hljs-number">175</span> <span class="hljs-number">171</span> <span class="hljs-number">180</span> <span class="hljs-number">175</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">4</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1009-qw的异或游戏"><a href="#1009-qw的异或游戏" class="headerlink" title="1009  qw的异或游戏"></a>1009  qw的异或游戏</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 7    Accepted Submission(s): 7</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">qw发明了一个有趣的异或游戏：</span><br><span class="line"></span><br><span class="line">游戏会给定n个非负整数，第i个数的值为ai，另外给定一个非负整数m，如果能找到任意一个非负整数k，满足：</span><br><span class="line">(a1 xor k)+(a2 xor k)+...+(an xor k)≤m</span><br><span class="line"></span><br><span class="line">则称该异或游戏是完美的。</span><br><span class="line"></span><br><span class="line">现在qw的问题是，对于一个异或游戏，如果它是完美的游戏，那么k最大可以为多少？如果不存在合法的k，则输出<span class="hljs-number">-1</span>。</span><br><span class="line"></span><br><span class="line">提示：异或是一种位运算，两个数异或，应先将两个数转成二进制，从低到高，按位运算，如果当前位两个数不同，则值为<span class="hljs-number">1</span>，否则为<span class="hljs-number">0</span>。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行给定一个整数T，表示有T组数据。</span><br><span class="line">每组数据有两行，第一行有两个整数n,m，意义见题目描述，第二行有n个整数，第i个整数的值为ai。</span><br><span class="line"></span><br><span class="line">数据范围：</span><br><span class="line"><span class="hljs-number">1</span>≤T≤<span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-number">1</span>≤N≤<span class="hljs-number">1000</span></span><br><span class="line"><span class="hljs-number">0</span>≤M≤<span class="hljs-number">1e6</span></span><br><span class="line"><span class="hljs-number">0</span>≤Ai≤<span class="hljs-number">1000</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每组数据，输出k的最大值，如果不存在合法的k，则输出<span class="hljs-number">-1</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">3</span> <span class="hljs-number">27</span></span><br><span class="line"><span class="hljs-number">8</span> <span class="hljs-number">2</span> <span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">45</span></span><br><span class="line"><span class="hljs-number">30</span> <span class="hljs-number">0</span> <span class="hljs-number">4</span> <span class="hljs-number">11</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-number">100</span></span><br><span class="line"><span class="hljs-number">6</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">5</span> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">12</span></span><br><span class="line"><span class="hljs-number">14</span></span><br><span class="line"><span class="hljs-number">100</span></span><br><span class="line"><span class="hljs-number">-1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="1010-s10的卡片"><a href="#1010-s10的卡片" class="headerlink" title="1010  s10的卡片"></a>1010  s10的卡片</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Time Limit: <span class="hljs-number">3000</span>/<span class="hljs-number">1000</span> MS (Java/Others)    Memory Limit: <span class="hljs-number">65535</span>/<span class="hljs-number">32768</span> K (Java/Others)</span><br><span class="line">Total Submission(s): 0    Accepted Submission(s): 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Problem Description</span><br><span class="line">s10现在有n张相同的卡片，卡片的值均为m (<span class="hljs-number">1</span>≤m≤<span class="hljs-number">9</span>) 。现在s10想用这些卡片拼成一个新的数（可以只取一部分），并希望这个数能被<span class="hljs-number">9</span>整除。如果能，请输出最大可以拼成的数，否则输出<span class="hljs-string">"-1"</span>。</span><br><span class="line"></span><br><span class="line">举例：如果有<span class="hljs-number">8</span>张值为<span class="hljs-number">6</span>的卡片，可以：</span><br><span class="line"><span class="hljs-number">1.</span> 取<span class="hljs-number">3</span>张拼成<span class="hljs-number">666</span>，可以被<span class="hljs-number">9</span>整除</span><br><span class="line"><span class="hljs-number">2.</span> 取<span class="hljs-number">6</span>张拼成<span class="hljs-number">666666</span>，可以被<span class="hljs-number">9</span>整除</span><br><span class="line">因为取<span class="hljs-number">6</span>张的值大于取<span class="hljs-number">3</span>张的值，故输出<span class="hljs-number">666666</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">第一行，给出一个正整数T,表示数据组数。</span><br><span class="line">接下来对于每组数据，给出两个正整数n 和 m ，分别表示卡片的张数和卡片上的数字。</span><br><span class="line"></span><br><span class="line">取值范围：</span><br><span class="line"><span class="hljs-number">1</span>≤n≤<span class="hljs-number">1000</span></span><br><span class="line"><span class="hljs-number">1</span>≤m≤<span class="hljs-number">9</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">对于每组数据，输出一个整数，表示用这些卡片最大可以拼成的被<span class="hljs-number">9</span>整除的数。如果不能，则输出 “<span class="hljs-number">-1</span>”。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Input</span><br><span class="line"><span class="hljs-number">4</span></span><br><span class="line"><span class="hljs-number">9</span> <span class="hljs-number">5</span></span><br><span class="line"><span class="hljs-number">1</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">10</span> <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-number">4</span> <span class="hljs-number">3</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Sample Output</span><br><span class="line"><span class="hljs-number">555555555</span></span><br><span class="line"><span class="hljs-number">-1</span></span><br><span class="line"><span class="hljs-number">222222222</span></span><br><span class="line"><span class="hljs-number">333</span></span><br></pre></td></tr></table></figure>
+
+<p>596382</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/DNtxHmiyswXazhn.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/Rjo9TbNc5nKmQFs.png" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/24/杭电校赛自写题解/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item"></span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/23/杭电校赛题解/">
+                <span class="level-item"></span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/themes/icarus/source/images/WalterJ726.jpg" alt="WalterJ726">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        WalterJ726
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Geek
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Exchange in Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        70
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/WalterJ726">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://weibo.com/p/1005055187006158" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">微博</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weibo.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ACMer/">
+            <span class="level-start">
+                <span class="level-item">ACMer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/ACM入门/">
+            <span class="level-start">
+                <span class="level-item">ACM入门</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/String/">
+            <span class="level-start">
+                <span class="level-item">String</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/动态规划/">
+            <span class="level-start">
+                <span class="level-item">动态规划</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/图论/">
+            <span class="level-start">
+                <span class="level-item">图论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/多任务编程/">
+            <span class="level-start">
+                <span class="level-item">多任务编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/大二上/">
+            <span class="level-start">
+                <span class="level-item">大二上</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索/">
+            <span class="level-start">
+                <span class="level-item">搜索</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索二分/">
+            <span class="level-start">
+                <span class="level-item">搜索二分</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/操作系统/">
+            <span class="level-start">
+                <span class="level-item">操作系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数论/">
+            <span class="level-start">
+                <span class="level-item">数论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/电脑配置/">
+            <span class="level-start">
+                <span class="level-item">电脑配置</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/网络通信概述/">
+            <span class="level-start">
+                <span class="level-item">网络通信概述</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/递推与DP/">
+            <span class="level-start">
+                <span class="level-item">递推与DP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/高级数据结构/">
+            <span class="level-start">
+                <span class="level-item">高级数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/ACM-learning-process/" style="font-size: 15px;">ACM learning process</a> <a href="/tags/ACMer/" style="font-size: 20px;">ACMer</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/STL/" style="font-size: 10px;">STL</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/多任务/" style="font-size: 10px;">多任务</a> <a href="/tags/搭建网站/" style="font-size: 10px;">搭建网站</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/时间表/" style="font-size: 10px;">时间表</a> <a href="/tags/编程环境/" style="font-size: 10px;">编程环境</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 WalterJ726&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

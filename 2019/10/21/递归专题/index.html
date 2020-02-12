@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>递归专题 - WalterJ726</title>
+
+
+    <meta name="description" content="递推专题hdoj2040 problemA 先通过循环找到有多少种组，然后再对这些组合进行排列  用dfs，但是dfs根本就不能决定下一次是走2步还是一步  一个斐波那契数列，为什么是斐波那契数列呢，因为你可以这样想，如果前面的方法全部知道，那么最后一个f(n）的走法，就是f(n-1)+f(n-2)。">
+<meta name="keywords" content="ACM learning process">
+<meta property="og:type" content="article">
+<meta property="og:title" content="递归专题">
+<meta property="og:url" content="http://yoursite.com/2019/10/21/递归专题/index.html">
+<meta property="og:site_name" content="WalterJ726">
+<meta property="og:description" content="递推专题hdoj2040 problemA 先通过循环找到有多少种组，然后再对这些组合进行排列  用dfs，但是dfs根本就不能决定下一次是走2步还是一步  一个斐波那契数列，为什么是斐波那契数列呢，因为你可以这样想，如果前面的方法全部知道，那么最后一个f(n）的走法，就是f(n-1)+f(n-2)。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571550143261&di=9d312602223e3f392eb6769071f219b4&imgtype=0&src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png">
+<meta property="og:updated_time" content="2019-12-24T07:29:53.451Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="递归专题">
+<meta name="twitter:description" content="递推专题hdoj2040 problemA 先通过循环找到有多少种组，然后再对这些组合进行排列  用dfs，但是dfs根本就不能决定下一次是走2步还是一步  一个斐波那契数列，为什么是斐波那契数列呢，因为你可以这样想，如果前面的方法全部知道，那么最后一个f(n）的走法，就是f(n-1)+f(n-2)。">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571550143261&di=9d312602223e3f392eb6769071f219b4&imgtype=0&src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="递归专题" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/WalterJ726">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1571550143261&amp;di=9d312602223e3f392eb6769071f219b4&amp;imgtype=0&amp;src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png" alt="递归专题">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-21T03:29:04.057Z">2019-10-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/递推与DP/">递推与DP</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1804 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                递归专题
+            
+        </h1>
+        <div class="content">
+            <h1 id="递推专题"><a href="#递推专题" class="headerlink" title="递推专题"></a>递推专题</h1><h3 id="hdoj2040-problemA"><a href="#hdoj2040-problemA" class="headerlink" title="hdoj2040 problemA"></a>hdoj2040 problemA</h3><ol>
+<li><p>先通过循环找到有多少种组，然后再对这些组合进行排列</p>
+</li>
+<li><p>用dfs，但是dfs根本就不能决定下一次是走2步还是一步</p>
+</li>
+<li><p>一个斐波那契数列，为什么是斐波那契数列呢，因为你可以这样想，如果前面的方法全部知道，那么最后一个f(n）的走法，就是f(n-1)+f(n-2)。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<blockquote>
+<p>空间换时间的思想</p>
+</blockquote>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> a[<span class="hljs-number">100</span>];<span class="hljs-comment">//设置一个保存计算重复的数据</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ans;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">2</span>)<span class="hljs-comment">//如果N&gt;2需要调用前面的n-1和n-2进行计算</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (a[n] != <span class="hljs-number">-1</span>)&#123;<span class="hljs-comment">//优先查看是否已经计算过</span></span><br><span class="line">            ans = a[n];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//否则递归</span></span><br><span class="line">            ans = f(n - <span class="hljs-number">1</span>) + f(n - <span class="hljs-number">2</span>);</span><br><span class="line">            a[n] = ans;<span class="hljs-comment">//记得将这个递归计算的结果写入到以n为下标的数组，其他递推可以在计算时候直接调用这个值</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,m;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++)</span><br><span class="line">        a[i] = <span class="hljs-number">-1</span>;<span class="hljs-comment">//将数组置为-1</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; m;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; f(m)&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>迭代</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>,p1=<span class="hljs-number">1</span>,p2=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-number">1</span>==n) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-number">2</span>==n) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      sum=p1+p2;</span><br><span class="line">      p1=p2;</span><br><span class="line">       p2=sum;</span><br><span class="line">        n--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hdoj2044"><a href="#hdoj2044" class="headerlink" title="hdoj2044"></a>hdoj2044</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> N;</span><br><span class="line"><span class="hljs-keyword">int</span> a,b;</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dp[<span class="hljs-number">51</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">    dp[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    dp[<span class="hljs-number">2</span>]=<span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">3</span>;i&lt;<span class="hljs-number">50</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i]=dp[i<span class="hljs-number">-1</span>]+dp[i<span class="hljs-number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;N;</span><br><span class="line">    solve();</span><br><span class="line">    <span class="hljs-keyword">while</span>(N--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">        <span class="hljs-built_in">cout</span>&lt;&lt;dp[b-a]&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//用数组存不会炸数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">41</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-comment">//int f1[201]=&#123;0&#125;;</span></span><br><span class="line"><span class="hljs-comment">//int f2[201];</span></span><br><span class="line"><span class="hljs-comment">//vector&lt;int&gt; f;</span></span><br><span class="line"><span class="hljs-comment">//int f[maxn];</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    ll sum=<span class="hljs-number">0</span>,p1=<span class="hljs-number">1</span>,p2=<span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(n==<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sum=p1+p2;</span><br><span class="line">        p1=p2;</span><br><span class="line">        p2=sum;</span><br><span class="line">        n--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> number,a,b=<span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;number))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (number--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;a,&amp;b);</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;climbStairs(b-a)&lt;&lt;<span class="hljs-built_in">endl</span>;     </span><br><span class="line">        &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//用这个存会炸数</span></span><br></pre></td></tr></table></figure>
+
+<p>函数返回的时候，还有函数输入的时候也要表明longlong</p>
+<h3 id="hdoj2045"><a href="#hdoj2045" class="headerlink" title="hdoj2045"></a>hdoj2045</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  i,a[<span class="hljs-number">55</span>];</span><br><span class="line">    a[<span class="hljs-number">1</span>]=<span class="hljs-number">3</span>;</span><br><span class="line">    a[<span class="hljs-number">2</span>]=<span class="hljs-number">6</span>;</span><br><span class="line">    a[<span class="hljs-number">3</span>]=<span class="hljs-number">6</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">4</span>;i&lt;=<span class="hljs-number">55</span>;i++)</span><br><span class="line">        a[i]=a[i<span class="hljs-number">-1</span>]+a[i<span class="hljs-number">-2</span>]*<span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> n;</span><br><span class="line">    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span>&lt;&lt;a[n]&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一般有递推的题目都是涉及到一步，两步的</p>
+<p>而且要考虑少做一步和少做两步的情况</p>
+<h3 id="hdoj-2046"><a href="#hdoj-2046" class="headerlink" title="hdoj 2046"></a>hdoj 2046</h3><p>这道题的话，首先我们不能仅仅只看前两个，要找到改变元素的基本单位元</p>
+<p>就是假设，n-1的时候他有几种情况，n-2的时候会有几种不重复的情况</p>
+<p>n-3的情况会不会又和n-1和n-2重复</p>
+<h3 id="分割问题"><a href="#分割问题" class="headerlink" title="分割问题"></a>分割问题</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-number">1</span>) n条直线最多分平面问题</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      题目大致如:n条直线，最多可以把平面分为多少个区域。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      析:可能你以前就见过这题目，这充其量是一道初中的思考题。但一个类型的题目还是从简单的入手，才容易发现规律。当有n<span class="hljs-number">-1</span>条直线时，平面最多被分成了f（n<span class="hljs-number">-1</span>）个区域。则第n条直线要是切成的区域数最多，就必须与每条直线相交且不能有同一交点。这样就会得到n<span class="hljs-number">-1</span>个交点。这些交点将第n条直线分为<span class="hljs-number">2</span>条射线和n<span class="hljs-number">-2</span>条线断。而每条射线和线断将以有的区域一分为二。这样就多出了<span class="hljs-number">2</span>+（n<span class="hljs-number">-2</span>）个区域。</span><br><span class="line"></span><br><span class="line">         故：f(n)=f(n<span class="hljs-number">-1</span>)+n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      =f(n<span class="hljs-number">-2</span>)+(n<span class="hljs-number">-1</span>)+n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      ……</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      =f(<span class="hljs-number">1</span>)+<span class="hljs-number">1</span>+<span class="hljs-number">2</span>+……+n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      =n(n+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         (<span class="hljs-number">2</span>) 折线分平面（hdu2050）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       根据直线分平面可知，由交点决定了射线和线段的条数，进而决定了新增的区域数。当n<span class="hljs-number">-1</span>条折线时，区域数为f（n<span class="hljs-number">-1</span>）。为了使增加的区域最多，则折线的两边的线段要和n<span class="hljs-number">-1</span>条折线的边，即<span class="hljs-number">2</span>*（n<span class="hljs-number">-1</span>）条线段相交。那么新增的线段数为<span class="hljs-number">4</span>*（n<span class="hljs-number">-1</span>），射线数为<span class="hljs-number">2</span>。但要注意的是，折线本身相邻的两线段只能增加一个区域。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      </span><br><span class="line">       故：f(n)=f(n<span class="hljs-number">-1</span>)+<span class="hljs-number">4</span>(n<span class="hljs-number">-1</span>)+<span class="hljs-number">2</span><span class="hljs-number">-1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      =f(n<span class="hljs-number">-1</span>)+<span class="hljs-number">4</span>(n<span class="hljs-number">-1</span>)+<span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                     =f(n<span class="hljs-number">-2</span>)+<span class="hljs-number">4</span>(n<span class="hljs-number">-2</span>)+<span class="hljs-number">4</span>(n<span class="hljs-number">-1</span>)+<span class="hljs-number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                     ……</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                     =f(<span class="hljs-number">1</span>)+<span class="hljs-number">4</span>+<span class="hljs-number">4</span>*<span class="hljs-number">2</span>+……+<span class="hljs-number">4</span>(n<span class="hljs-number">-1</span>)+(n<span class="hljs-number">-1</span>)   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                     =<span class="hljs-number">2</span>n^<span class="hljs-number">2</span>-n+<span class="hljs-number">1</span><span class="hljs-comment">//不一定对</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      (<span class="hljs-number">3</span>) 封闭曲线分平面问题</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      题目大致如设有n条封闭曲线画在平面上，而任何两条封闭曲线恰好相交于两点，且任何三条封闭曲线不相交于同一点，问这些封闭曲线把平面分割成的区域个数。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       析：当n<span class="hljs-number">-1</span>个圆时，区域数为f(n<span class="hljs-number">-1</span>).那么第n个圆就必须与前n<span class="hljs-number">-1</span>个圆相交，则第n个圆被分为<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）段线段，增加了<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）个区域。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             故： f(n)=f(n<span class="hljs-number">-1</span>)+<span class="hljs-number">2</span>(n<span class="hljs-number">-1</span>)     </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                             =f(<span class="hljs-number">1</span>)+<span class="hljs-number">2</span>+<span class="hljs-number">4</span>+……+<span class="hljs-number">2</span>(n<span class="hljs-number">-1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                             =n^<span class="hljs-number">2</span>-n+<span class="hljs-number">2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          (<span class="hljs-number">4</span>)平面分割空间问题（hdu1290）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          由二维的分割问题可知，平面分割与线之间的交点有关，即交点决定射线和线段的条数，从而决定新增的区域数。试想在三维中则是否与平面的交线有关呢？当有n<span class="hljs-number">-1</span>个平面时，分割的空间数为f（n<span class="hljs-number">-1</span>）。要有最多的空间数，则第n个平面需与前n<span class="hljs-number">-1</span>个平面相交，且不能有共同的交线。即最多有n<span class="hljs-number">-1</span> 条交线。而这n<span class="hljs-number">-1</span>条交线把第n个平面最多分割成g（n<span class="hljs-number">-1</span>）个区域。（g（n）为（<span class="hljs-number">1</span>）中的直线分平面的个数）此平面将原有的空间一分为二，则最多增加g（n<span class="hljs-number">-1</span>）个空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        故：f=f(n<span class="hljs-number">-1</span>)+g(n<span class="hljs-number">-1</span>)    ps:g(n)=n(n+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>+<span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                   =f(n<span class="hljs-number">-2</span>)+g(n<span class="hljs-number">-2</span>)+g(n<span class="hljs-number">-1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                   ……</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                  =f(<span class="hljs-number">1</span>)+g(<span class="hljs-number">1</span>)+g(<span class="hljs-number">2</span>)+……+g(n<span class="hljs-number">-1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 =<span class="hljs-number">2</span>+(<span class="hljs-number">1</span>*<span class="hljs-number">2</span>+<span class="hljs-number">2</span>*<span class="hljs-number">3</span>+<span class="hljs-number">3</span>*<span class="hljs-number">4</span>+……+(n<span class="hljs-number">-1</span>)n)/<span class="hljs-number">2</span>+（n<span class="hljs-number">-1</span>）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 =(<span class="hljs-number">1</span>+<span class="hljs-number">2</span>^<span class="hljs-number">2</span>+<span class="hljs-number">3</span>^<span class="hljs-number">2</span>+<span class="hljs-number">4</span>^<span class="hljs-number">2</span>+……+n^<span class="hljs-number">2</span><span class="hljs-number">-1</span><span class="hljs-number">-2</span><span class="hljs-number">-3</span>-……-n )/<span class="hljs-number">2</span>+n+<span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                =(n^<span class="hljs-number">3</span>+<span class="hljs-number">5</span>n)/<span class="hljs-number">6</span>+<span class="hljs-number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首先我们从一条线的开始判断,要使得取的面最多，则n条线要与n<span class="hljs-number">-1</span>条线之间都要有交点，则当第n条线与n<span class="hljs-number">-1</span>条线相交的时候，则会出现n<span class="hljs-number">-2</span>条线段和<span class="hljs-number">2</span>条射线，此n<span class="hljs-number">-2</span>条线段会将已有的面分成两个面，每条射线也会将已有的面分成两个面，则我们得出一下式子为f(n)=f(n<span class="hljs-number">-1</span>)+n<span class="hljs-number">-2</span>+<span class="hljs-number">2</span>;起分别为当加入第n条线的时候，则会在第n<span class="hljs-number">-1</span>条基础上再多家n<span class="hljs-number">-2</span>（线段切割的面）+<span class="hljs-number">2</span>(两条射线切割的面)</span><br><span class="line"></span><br><span class="line">当我们折线的时候，则在第n条折线的时候，我们首先利用第n条折线中的其中一条折边穿过第n<span class="hljs-number">-1</span>条折线这些线，为了取得最多面，由于第n<span class="hljs-number">-1</span>条折线会产生<span class="hljs-number">2</span>(n<span class="hljs-number">-1</span>)条线，则要使其折边穿过这<span class="hljs-number">2</span>(n<span class="hljs-number">-1</span>)条线，则当这条折边穿过这些线的时候会产生，<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>条线段，以及两条射线，同理得另外一条折线也可以产生<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>条线段，以及两条射线。则他们之间在第n<span class="hljs-number">-1</span>条折线的基础上会多增加<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>+<span class="hljs-number">2</span>（其中一条折线产生的两条射线的多出的两面）+<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>+<span class="hljs-number">2</span>（另外一条折线产生的两条射线的多出的两面），但是由于这两条折线之间会有交点，则其这第n<span class="hljs-number">-1</span>条折线总共会产生两条折线而已，又由于另外两条射线相交产生一个面，则要把这个面加上去，把另外射线产生的面给减掉，则得出公式为多：增加**<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>+<span class="hljs-number">2</span>（其中一条折线产生的两条射线的多出的两面）+<span class="hljs-number">2</span>（n<span class="hljs-number">-1</span>）<span class="hljs-number">-1</span>+<span class="hljs-number">2</span>（另外一条折线产生的两条射线的多出的两面）+<span class="hljs-number">1</span>（两条射线产生的面）<span class="hljs-number">-2</span>（去掉两条射线产生的面，因为他们之间相交了），则化简得公式f(n)=f(n<span class="hljs-number">-1</span>)+<span class="hljs-number">4</span>*n<span class="hljs-number">-3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>思路：和n条直线最多能把平面分成多少个部分规律相同，但需要进一步处理。</p>
+<p><img src="https://img-blog.csdn.net/20160125135046663" alt="img"></p>
+<p>​     把画折线当作画直线处理即：每画一条折线，就当作画两条直线处理,最后由于两条直线相交时延长线就不再画出。所以在两条直线的基础上，减去2（折线情况比直线情况少2个部分,见图）</p>
+<p>注意输入的时候可能会不对</p>
+<h3 id="hdoj2018"><a href="#hdoj2018" class="headerlink" title="hdoj2018"></a>hdoj2018</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">41</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-comment">//int f1[201]=&#123;0&#125;;</span></span><br><span class="line"><span class="hljs-comment">//int f2[201];</span></span><br><span class="line"><span class="hljs-comment">//vector&lt;int&gt; f;</span></span><br><span class="line"><span class="hljs-comment">//int f[maxn];</span></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">color</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    ll n1=<span class="hljs-number">1</span>;</span><br><span class="line">    ll n2=<span class="hljs-number">2</span>;</span><br><span class="line">    ll n3=<span class="hljs-number">3</span>;</span><br><span class="line">    ll sum=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(a==<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(a==<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span>(a==<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt; a; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        sum=n3+n1;</span><br><span class="line">        n1=n2;</span><br><span class="line">        n2=n3;</span><br><span class="line">        n3=sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n) &amp;&amp; n)</span><br><span class="line">    &#123;</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,color(n));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//用这个存会炸数</span></span><br></pre></td></tr></table></figure>
+
+<p>递推一定要找到变化量和不变量</p>
+<p>比如说这个题，到什么时候某些数才会开始变化?</p>
+<p>f(n-1)同时还可以把年份和数量联系起来</p>
+<p>第n年的母牛的来源分别来自于<strong>前一年剩下的</strong>和<strong>往前推3年的母牛（能生的母牛，最早的也算在里面）</strong></p>
+<p>以前5年为例：{1,2,3,4,6}</p>
+<p>6 = 前一年剩下的4头牛+（第2年新产的母牛刚具有生育能力生下的<strong>1头</strong>+最早的母牛<strong>1头</strong>）</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>int main()<br>{<br>    int test, n;<br>    int a[22] = {0, 1, 0, 4, 4};<br>    int sum[22] = {0, 1, 1, 5, 9};<br>    int i;<br>    for (i = 5; i &lt; 21; ++i)<br>    {<br>        a[i] = (a[i - 2] + a[i - 3] + a[i - 4]) * 4;<br>        sum[i] = sum[i - 1] + a[i] - a[i - 5];<br>    }<br>    scanf(“%d”, &amp;test);<br>    for (; test &gt; 0; –test)<br>    {<br>        scanf(“%d”, &amp;n);<br>        printf(“%d\n”, sum[n]);<br>    }<br>    return 0;<br>}</p>
+<h3 id="hdoj-2190"><a href="#hdoj-2190" class="headerlink" title="hdoj 2190"></a>hdoj 2190</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>  i,a[<span class="hljs-number">55</span>];</span><br><span class="line">    a[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    a[<span class="hljs-number">2</span>]=<span class="hljs-number">3</span>;</span><br><span class="line">    a[<span class="hljs-number">3</span>]=<span class="hljs-number">5</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">4</span>;i&lt;=<span class="hljs-number">55</span>;i++)</span><br><span class="line">        a[i]=a[i<span class="hljs-number">-1</span>]+a[i<span class="hljs-number">-2</span>]*<span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,t;</span><br><span class="line">    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;a[n]&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原题！！！</p>
+<p>竟然还不会做，这就是骨牌铺地砖、</p>
+<h3 id="hdoj-2501"><a href="#hdoj-2501" class="headerlink" title="hdoj 2501"></a>hdoj 2501</h3><p>和前面一样的思路</p>
+<h2 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h2><p>三个方向的深搜</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">bool</span> maze[<span class="hljs-number">25</span>][<span class="hljs-number">50</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n,sum;</span><br><span class="line"><span class="hljs-keyword">int</span> dir[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>&#125;;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> step)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span>(step==n)sum++;</span><br><span class="line">	<span class="hljs-keyword">else</span> &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> newx=x+dir[i][<span class="hljs-number">0</span>];</span><br><span class="line">			<span class="hljs-keyword">int</span> newy=y+dir[i][<span class="hljs-number">1</span>];</span><br><span class="line">			<span class="hljs-keyword">if</span>(maze[newx][newy])<span class="hljs-keyword">continue</span>;</span><br><span class="line">			maze[newx][newy]=<span class="hljs-number">1</span>;</span><br><span class="line">			dfs(newx,newy,step+<span class="hljs-number">1</span>);</span><br><span class="line">			maze[newx][newy]=<span class="hljs-number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> c;</span><br><span class="line">	<span class="hljs-built_in">cin</span>&gt;&gt;c;</span><br><span class="line">	<span class="hljs-keyword">int</span> ans[<span class="hljs-number">25</span>];</span><br><span class="line">	ans[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span>(n=<span class="hljs-number">1</span>;n&lt;=<span class="hljs-number">20</span>;n++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">memset</span>(maze,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(maze));</span><br><span class="line">		maze[<span class="hljs-number">20</span>][<span class="hljs-number">20</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">		sum=<span class="hljs-number">0</span>;</span><br><span class="line">		dfs(<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,<span class="hljs-number">0</span>);</span><br><span class="line">		ans[n]=sum;</span><br><span class="line">	&#125;</span><br><span class="line">	ofstream fout;</span><br><span class="line">	fout.open(<span class="hljs-string">"file1.txt"</span>);</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">20</span>;i++)fout&lt;&lt;ans[i]&lt;&lt;<span class="hljs-string">" "</span>;</span><br><span class="line">	<span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">while(c--)</span></span><br><span class="line"><span class="hljs-comment">	&#123;</span></span><br><span class="line"><span class="hljs-comment">		cin&gt;&gt;n;</span></span><br><span class="line"><span class="hljs-comment">		cout&lt;&lt;ans[n]&lt;&lt;endl;</span></span><br><span class="line"><span class="hljs-comment">	&#125;*/</span></span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">""</span><span class="hljs-string">"改进之后的版本"</span><span class="hljs-string">""</span></span><br><span class="line">    <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">55</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> result=<span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> cor[maxn][maxn]=&#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">//如果要memset怎么搞</span></span><br><span class="line"><span class="hljs-keyword">int</span> dir[<span class="hljs-number">3</span>][<span class="hljs-number">2</span>]=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span>)&#123;</span><br><span class="line">        sum++;</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++)&#123; <span class="hljs-comment">//检查要放到for之后</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(cor[x+dir[i][<span class="hljs-number">0</span>]][y+dir[i][<span class="hljs-number">1</span>]] != <span class="hljs-number">1</span>)&#123;</span><br><span class="line"></span><br><span class="line">                cor[x+dir[i][<span class="hljs-number">0</span>]][y+dir[i][<span class="hljs-number">1</span>]] = <span class="hljs-number">1</span>;<span class="hljs-comment">//不是cor[x][y]而是改变之后的坐标</span></span><br><span class="line">                dfs(x+dir[i][<span class="hljs-number">0</span>],y+dir[i][<span class="hljs-number">1</span>],n<span class="hljs-number">-1</span>);</span><br><span class="line">                <span class="hljs-comment">//n++;这个为什么不用</span></span><br><span class="line">                cor[x+dir[i][<span class="hljs-number">0</span>]][y+dir[i][<span class="hljs-number">1</span>]] = <span class="hljs-number">0</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line">    <span class="hljs-comment">//return ;    </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> c,n;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;c);</span><br><span class="line">        <span class="hljs-keyword">while</span> (c--)</span><br><span class="line">        &#123;</span><br><span class="line">            sum=<span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-built_in">memset</span>(cor,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(cor));</span><br><span class="line">            <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">            cor[<span class="hljs-number">20</span>][<span class="hljs-number">20</span>]=<span class="hljs-number">1</span>;<span class="hljs-comment">//要把第一步弄为1 </span></span><br><span class="line">            dfs(<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,n);</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>递推版本</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn=<span class="hljs-number">55</span>;    </span><br><span class="line"><span class="hljs-keyword">int</span> StepL[maxn]=&#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> StepR[maxn]=&#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> StepUp[maxn]=&#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> Sum[maxn]=&#123;<span class="hljs-number">0</span>&#125;; <span class="hljs-comment">//全局范围内定义变量没问题</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> c,n;</span><br><span class="line">    StepL[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    StepR[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    StepUp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    Sum[<span class="hljs-number">0</span>]=<span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">20</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        StepL[i]=StepUp[i<span class="hljs-number">-1</span>]+StepR[i<span class="hljs-number">-1</span>];</span><br><span class="line">        StepR[i]=StepL[i<span class="hljs-number">-1</span>]+StepUp[i<span class="hljs-number">-1</span>];</span><br><span class="line">        StepUp[i]=StepUp[i<span class="hljs-number">-1</span>]+StepR[i<span class="hljs-number">-1</span>]+StepL[i<span class="hljs-number">-1</span>];</span><br><span class="line">        Sum[i]=StepL[i]+StepR[i]+StepUp[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;c);</span><br><span class="line">    <span class="hljs-keyword">while</span> (c--)</span><br><span class="line">    &#123;</span><br><span class="line">            <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;Sum[n<span class="hljs-number">-1</span>]&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h1><h2 id="hdoj-1207-汉诺塔二（有四根柱子）"><a href="#hdoj-1207-汉诺塔二（有四根柱子）" class="headerlink" title="hdoj 1207 汉诺塔二（有四根柱子）"></a>hdoj 1207 汉诺塔二（有四根柱子）</h2><p>首先这是个多柱汉诺塔问题，对于n阶汉诺塔，具体步骤如下：</p>
+<ol>
+<li>首先我们将x个盘子移到B柱，步数为step(x);</li>
+<li>然后将n-x个盘子移到C柱，步数为2^(n-x)-1;</li>
+<li>最后我们再将B柱上的x个盘子移到C柱，步数为step(x)。</li>
+<li>上面的x在1到n之间取值，对于每一个X，我们可以求出一个step(n),然后我们取其中的最小值作为最优解；</li>
+<li>step(n)为走到那里的最小步骤</li>
+</ol>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">double</span> step[<span class="hljs-number">65</span>];            <span class="hljs-comment">//为防止溢出，使用double</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    step[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">    step[<span class="hljs-number">2</span>] = <span class="hljs-number">3</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt; <span class="hljs-number">65</span>; i ++) &#123;</span><br><span class="line">        step[i] = <span class="hljs-number">100000</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; i; j ++) &#123;</span><br><span class="line">            step[i] = min(step[i], (<span class="hljs-keyword">double</span>)(<span class="hljs-number">2</span> * step[j] + <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, i - j) - <span class="hljs-number">1</span>)); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> n;</span><br><span class="line">    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">cin</span> &gt;&gt; n) &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; step[n] &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hdoj-2064-汉诺塔三（只能移到旁边）"><a href="#hdoj-2064-汉诺塔三（只能移到旁边）" class="headerlink" title="hdoj 2064 汉诺塔三（只能移到旁边）"></a>hdoj 2064 汉诺塔三（只能移到旁边）</h2><p>很郁闷，以前会做的汉诺塔问题居然一开始没想出来，好记性不如烂笔头，今日把这道题目记下来，方便以后查阅<br>( ・◡・)<br>这道题目和经典汉诺塔问题还不太一样，原题链接在此：HDU2064 不过题目再怎么变，思路还是一样的。<br>汉诺塔问题重点在于找到递推式，分析思路即模拟搬圆盘的过程，设step[i]为搬动第i个圆盘需要的最小步数。思路如下：</p>
+<p>首先将 i-1 个圆盘移动到最右边柱子上<br>然后第 i 个圆盘移到中间<br>前 i-1 个圆盘再移动到最左边的柱子上<br>第 i 圆盘移动到最右边柱子上<br>最后将i-1个圆盘移动到最右边的柱子上<br>由上述过程可得递推式：<br>step[i]=step[i-1]+1+step[i-1]+1+step[i-1]=3step[i-1]+2</p>
+<p>整理之后也就是3^n次方</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,i;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> step[<span class="hljs-number">35</span>];</span><br><span class="line">    step[<span class="hljs-number">0</span>]=<span class="hljs-number">2</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">35</span>;i++)&#123;</span><br><span class="line">        step[i]=<span class="hljs-number">3</span>*step[i<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n)!=EOF)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,step[n<span class="hljs-number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hdoj-2077-汉诺塔四（大的可以任意放）"><a href="#hdoj-2077-汉诺塔四（大的可以任意放）" class="headerlink" title="hdoj 2077 汉诺塔四（大的可以任意放）"></a>hdoj 2077 汉诺塔四（大的可以任意放）</h2><p>先引出：<br>把i个盘子从左移到右且最大的盘子可以放在最上面 –最优做法为:<br>先把上面i-1盘子移到中间 然后把最大的移到中间再移到右边 最后把中间i-1盘子移到右边<br>则有公式：dp3[i] = 2*dp1[i-1]+2;<br>现在我们需要求dp1的数据 即把i个盘子从左边移到中间所需次数且小的只能放在大的上面–最优做法为：<br>先把i-1个盘子移到右边,把最大的移到中间,然后再把右边的i-1个盘子移到中间<br>则有公式：dp1[i] = dp2[i-1] + dp1[i-1] +1; </p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> max 20+1</span></span><br><span class="line"><span class="hljs-keyword">int</span> dp2[max];<span class="hljs-comment">//dp2[i]为汉诺塔3那道题的递推式(表示把i个盘子从左边移到右边所需次数),这里不做解释  </span></span><br><span class="line"><span class="hljs-keyword">int</span> dp1[max];<span class="hljs-comment">//dp1[i]表示把i个盘子从左边移到中间所需次数  需要借助dp2 的数据 </span></span><br><span class="line"><span class="hljs-keyword">int</span> dp3[max];<span class="hljs-comment">//dp3[i]就是照应题目的递推式  需要借助dp1的数据  </span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> t,n,i,j;</span><br><span class="line">	dp2[<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;dp1[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;dp3[<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">2</span>;i&lt;max;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp2[i]=<span class="hljs-number">3</span>*dp2[i<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>;<span class="hljs-comment">//求dp2 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">2</span>;i&lt;max;i++)<span class="hljs-comment">//求dp1 </span></span><br><span class="line">	&#123;</span><br><span class="line">		dp1[i]=dp2[i<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>+dp1[i<span class="hljs-number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">2</span>;i&lt;max;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		dp3[i]=<span class="hljs-number">2</span>*dp1[i<span class="hljs-number">-1</span>]+<span class="hljs-number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="hljs-keyword">while</span>(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dp3[n]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hdoj-1995-汉诺塔（求每个盘的移动次数）"><a href="#hdoj-1995-汉诺塔（求每个盘的移动次数）" class="headerlink" title="hdoj 1995 汉诺塔（求每个盘的移动次数）"></a>hdoj 1995 汉诺塔（求每个盘的移动次数）</h2><p>1.首先，k 号盘子的移动次数只与 k 下面的盘子数有关，而与 k 上面的盘子数无关，具体原因自己想一下（有问题可以在下方留言），所以，原问题就可以转化为这样：<br>    给定 k 个盘子，最上方的盘子移动了多少次。</p>
+<p>2.找规律：假设最上方的盘子编号为 1 。<br>  k==1，移动 1 次 ；<br>  k==2，1  移动 2次，<br>              2 移动 1 次；<br>  k==3，1  移动 4 次；<br>              2 移动 2 次；<br>              3 移动 1 次；</p>
+<p> 由此，我们猜测在移动过程中，i 号盘子的移动次数是 i-1 号盘子的两倍（实际上这就是正确的）；<br> 则盘子数为 k ，1 号盘子的移动次数为 2^(k-1)；</p>
+<p>3.得出答案：ans=2^(n-k)；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a[<span class="hljs-number">64</span>];</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">  freopen(<span class="hljs-string">"hdu1995.in"</span>,<span class="hljs-string">"r"</span>,<span class="hljs-built_in">stdin</span>);</span><br><span class="line">  freopen(<span class="hljs-string">"hdu1995.out"</span>,<span class="hljs-string">"w"</span>,<span class="hljs-built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">work</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> i,j,k,t,n;</span><br><span class="line">  <span class="hljs-keyword">for</span>(a[<span class="hljs-number">0</span>]=i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">60</span>;i++)a[i]=a[i<span class="hljs-number">-1</span>]*<span class="hljs-number">2</span>;</span><br><span class="line">  <span class="hljs-keyword">while</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;t)==<span class="hljs-number">1</span>)\</span><br><span class="line">    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;=t;i++)<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;k),<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%I64d\n"</span>,a[n-k]);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">  init();</span><br><span class="line">  work();</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正确代码</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,k;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d "</span>,&amp;t);</span><br><span class="line">    <span class="hljs-keyword">while</span>(t--)&#123;</span><br><span class="line">            <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">int</span> sum=<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n-k;i++)</span><br><span class="line">            sum=sum*<span class="hljs-number">2</span>;</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1996-汉诺塔6-（求汉诺塔摆放的总和）"><a href="#1996-汉诺塔6-（求汉诺塔摆放的总和）" class="headerlink" title="1996 汉诺塔6 （求汉诺塔摆放的总和）"></a>1996 汉诺塔6 （求汉诺塔摆放的总和）</h2><p>其实它就是求移动的所有可能，也就是n个盘子摆在三个塔上的任何可能的种数。可以这么思考这个问题：n个盘子分开摆在三个塔上，所有可能的种数（这个和高中时候的一个信封投递到邮箱的问题很类似，那个是4封信投到3个邮箱，求投的种数的）；n个盘子，每个盘子有3种摆法，所以n个盘子摆在3个塔上的摆法就有3n种。知道这个规律之后，我们的问题就迎刃而解了。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int t;</span><br><span class="line">	int n;</span><br><span class="line">	while(scanf(&quot;%d&quot;,&amp;t)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		while(t--)</span><br><span class="line">		&#123;</span><br><span class="line">			scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">			printf(&quot;%.0f\n&quot;,pow(3,n));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ACM-learning-process/">ACM learning process</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/DNtxHmiyswXazhn.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/Rjo9TbNc5nKmQFs.png" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/21/图的最短路径/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">图的最短路径</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/17/字符串/">
+                <span class="level-item">字符串</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/themes/icarus/source/images/WalterJ726.jpg" alt="WalterJ726">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        WalterJ726
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Geek
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Exchange in Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        70
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/WalterJ726">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://weibo.com/p/1005055187006158" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">微博</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weibo.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ACMer/">
+            <span class="level-start">
+                <span class="level-item">ACMer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/ACM入门/">
+            <span class="level-start">
+                <span class="level-item">ACM入门</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/String/">
+            <span class="level-start">
+                <span class="level-item">String</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/动态规划/">
+            <span class="level-start">
+                <span class="level-item">动态规划</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/图论/">
+            <span class="level-start">
+                <span class="level-item">图论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/多任务编程/">
+            <span class="level-start">
+                <span class="level-item">多任务编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/大二上/">
+            <span class="level-start">
+                <span class="level-item">大二上</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索/">
+            <span class="level-start">
+                <span class="level-item">搜索</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索二分/">
+            <span class="level-start">
+                <span class="level-item">搜索二分</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/操作系统/">
+            <span class="level-start">
+                <span class="level-item">操作系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数论/">
+            <span class="level-start">
+                <span class="level-item">数论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/电脑配置/">
+            <span class="level-start">
+                <span class="level-item">电脑配置</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/网络通信概述/">
+            <span class="level-start">
+                <span class="level-item">网络通信概述</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/递推与DP/">
+            <span class="level-start">
+                <span class="level-item">递推与DP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/高级数据结构/">
+            <span class="level-start">
+                <span class="level-item">高级数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/ACM-learning-process/" style="font-size: 15px;">ACM learning process</a> <a href="/tags/ACMer/" style="font-size: 20px;">ACMer</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/STL/" style="font-size: 10px;">STL</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/多任务/" style="font-size: 10px;">多任务</a> <a href="/tags/搭建网站/" style="font-size: 10px;">搭建网站</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/时间表/" style="font-size: 10px;">时间表</a> <a href="/tags/编程环境/" style="font-size: 10px;">编程环境</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="递归专题" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 WalterJ726&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

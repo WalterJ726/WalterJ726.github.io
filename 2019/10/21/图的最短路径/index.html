@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>图的最短路径 - WalterJ726</title>
+
+
+    <meta name="description" content="图的最短路hdoj  2544怎么表示这条边 DFS版本12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n">
+<meta name="keywords" content="ACMer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的最短路径">
+<meta property="og:url" content="http://yoursite.com/2019/10/21/图的最短路径/index.html">
+<meta property="og:site_name" content="WalterJ726">
+<meta property="og:description" content="图的最短路hdoj  2544怎么表示这条边 DFS版本12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571550143261&di=9d312602223e3f392eb6769071f219b4&imgtype=0&src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png">
+<meta property="og:updated_time" content="2019-12-11T11:53:13.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图的最短路径">
+<meta name="twitter:description" content="图的最短路hdoj  2544怎么表示这条边 DFS版本12345678910111213141516171819202122232425262728293031323334353637383940414243#include&amp;lt;cstdio&amp;gt;#include&amp;lt;cstring&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1571550143261&di=9d312602223e3f392eb6769071f219b4&imgtype=0&src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="图的最短路径" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/WalterJ726">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1571550143261&amp;di=9d312602223e3f392eb6769071f219b4&amp;imgtype=0&amp;src=http%3A%2F%2Ficpc.kateb.edu.af%2Fassets%2Fimg%2Fsponsors%2Facm_new.png" alt="图的最短路径">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-21T03:31:03.875Z">2019-10-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/图论/">图论</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    31 minutes read (About 4614 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                图的最短路径
+            
+        </h1>
+        <div class="content">
+            <h1 id="图的最短路"><a href="#图的最短路" class="headerlink" title="图的最短路"></a>图的最短路</h1><h2 id="hdoj-2544"><a href="#hdoj-2544" class="headerlink" title="hdoj  2544"></a>hdoj  2544</h2><p>怎么表示这条边</p>
+<h3 id="DFS版本"><a href="#DFS版本" class="headerlink" title="DFS版本"></a>DFS版本</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n,m,a,b,c,t;</span><br><span class="line"><span class="hljs-keyword">int</span> <span class="hljs-built_in">map</span>[<span class="hljs-number">108</span>][<span class="hljs-number">108</span>],v[<span class="hljs-number">108</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> p)</span><span class="hljs-comment">//x是开始的地方，p是当前的花费</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (p&gt;t) <span class="hljs-keyword">return</span> ; <span class="hljs-comment">//剪枝，搜到一半已经比上一次长了，就没必要再搜了</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (x==n)</span><br><span class="line">    &#123;</span><br><span class="line">        t=p;</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> i;</span><br><span class="line">    <span class="hljs-keyword">for</span> (i=<span class="hljs-number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!v[i]&amp;&amp;<span class="hljs-built_in">map</span>[x][i])</span><br><span class="line">        &#123;</span><br><span class="line">            v[i]=<span class="hljs-number">1</span>;</span><br><span class="line">            dfs(i,p+<span class="hljs-built_in">map</span>[x][i]);</span><br><span class="line">            v[i]=<span class="hljs-number">0</span>;<span class="hljs-comment">//回溯</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> i,j;</span><br><span class="line">    <span class="hljs-keyword">while</span> (~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>&amp;&amp;m==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(<span class="hljs-built_in">map</span>,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">map</span>));</span><br><span class="line">        <span class="hljs-built_in">memset</span>(v,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(v));</span><br><span class="line">        <span class="hljs-keyword">while</span> (m--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            <span class="hljs-built_in">map</span>[a][b]=<span class="hljs-built_in">map</span>[b][a]=c;<span class="hljs-comment">//用这个来表示边的长度</span></span><br><span class="line">        &#125;</span><br><span class="line">        t=<span class="hljs-number">1000000</span>;</span><br><span class="line">        dfs(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="Floyd-Warshall算法"><a href="#Floyd-Warshall算法" class="headerlink" title="Floyd-Warshall算法"></a>Floyd-Warshall算法</h3><blockquote>
+<p>运用了动态规划思想</p>
+</blockquote>
+<p>动态规划的过程可以描述为</p>
+<ol>
+<li>先以某个地方为节点，然后去寻找其他的位置</li>
+<li>以这个地方为节点的时候，如果去某个地方，要经过某个节点，判断去掉这个节点是否会更快</li>
+</ol>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF=<span class="hljs-number">1e6</span>;   <span class="hljs-comment">//路口之间的初始距离，看成无穷大，相当于断开</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">105</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> graph[NUM ][NUM ];  <span class="hljs-comment">//邻接矩阵存图</span></span><br><span class="line"><span class="hljs-keyword">int</span> n, m;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">floyd</span><span class="hljs-params">()</span> </span>&#123;   </span><br><span class="line"><span class="hljs-keyword">int</span> s=<span class="hljs-number">1</span>;                           <span class="hljs-comment">//定义起点</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>; k&lt;=n; k++)         <span class="hljs-comment">//floyd的3重循环</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)</span><br><span class="line">			<span class="hljs-keyword">if</span>(graph[i][k] != INF)       <span class="hljs-comment">//一个小优化，在hdu 1704中很必要</span></span><br><span class="line">            	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>; j&lt;=n; j++)  <span class="hljs-comment">//请思考：把k循环放到i、j之后行不行？</span></span><br><span class="line">                <span class="hljs-keyword">if</span>(graph[i][j] &gt; graph[i][k] + graph[k][j])</span><br><span class="line">                   graph[i][j] = graph[i][k] + graph[k][j];</span><br><span class="line"><span class="hljs-comment">// graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);   </span></span><br><span class="line"><span class="hljs-comment">//上面2句这样写也行，但是min()比较慢，如果图大，可能会超时。读者可以试试poj 3259</span></span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, graph[s][n]);   <span class="hljs-comment">//输出结果</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    	<span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m)) &#123; </span><br><span class="line">                        <span class="hljs-comment">//如果图的数据很大，不能用cin这种慢的输入</span></span><br><span class="line">        	<span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span> &amp;&amp; m==<span class="hljs-number">0</span>)  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)          <span class="hljs-comment">//邻接矩阵初始化</span></span><br><span class="line">            	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>; j&lt;=n; j++)</span><br><span class="line">                	graph[i][j] = INF;          <span class="hljs-comment">//任意两点间初始距离为无穷大</span></span><br><span class="line">        	<span class="hljs-keyword">while</span>(m--) &#123;   </span><br><span class="line">				<span class="hljs-keyword">int</span> a, b, c;</span><br><span class="line">            	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">            	graph[a][b] = graph[b][a] = c;  <span class="hljs-comment">//邻接矩阵存图</span></span><br><span class="line">        	&#125;                          </span><br><span class="line">        	floyd();        </span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个算法虽然低效，但是还是有优点：</p>
+<ol>
+<li><p>程序简单</p>
+</li>
+<li><p>可以一次性求出所有结点之间的最短路径（当然，这也是浪费时间的地方）</p>
+</li>
+<li><p>能处理有负权边的图</p>
+<p>首先我们要理解什么是负权边</p>
+<blockquote>
+<p>负权边就是我们如果有一条边是负的，那么他的最短路径是自己到自己，因为自己到自己可以越来越小，但是如果这样子做，我们永远找不到最短的路径</p>
+</blockquote>
+<p>但是我们还是有处理的方法，怎么处理呢？</p>
+<blockquote>
+<p>先不设定自己到自己的初始值，即初始值不为零，而为无穷大。然后经过三次遍历之后，得到了自己到自己的初始值，如果为负，则赋值为0</p>
+</blockquote>
+</li>
+</ol>
+<p>最后一个内容就是邻接矩阵</p>
+<p>顾名思义，邻接矩阵的表达方式就是通过一个二维矩阵，来存放顶点之间的关系（比如两个顶点之间的长度是多少）</p>
+<p>邻接矩阵是对称的，即</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> <span class="hljs-built_in">map</span>[<span class="hljs-number">30</span>];</span><br><span class="line"><span class="hljs-built_in">map</span>[a][b]=<span class="hljs-built_in">map</span>[b][a]=c;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h3><p>这个算法可以怎么样理解呢？</p>
+<blockquote>
+<p>问路</p>
+</blockquote>
+<p>比如说，你去问警察，从这里到s怎么走最近，但是这个警察不会，然后这个警察就去问隔壁的警察，这样一直问啊问，直到s的邻居问到了s，然后再一个一个返回</p>
+<p>同时还有一个比较有趣的点：</p>
+<blockquote>
+<p>警察并不知道去s这个地方的具体路径，他只需要知道从自己的路口出发往哪个方向走能到达s，并且路最近</p>
+</blockquote>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bellman</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> s = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> d[NUM];</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        d[i] = INF ;</span><br><span class="line">    d[s] = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; k++)</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++)</span><br><span class="line">            <span class="hljs-comment">//处理图中存在的边</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span> ; j &lt;= n ; j++)</span><br><span class="line">            <span class="hljs-keyword">if</span>...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这个代码并没有实用价值，为什么这么说呢，因为它使用了邻接矩阵这种不合适的数据结构。因为他会检查每一条边，而我只需要检查存在的m条边 </p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">源码后面接上</span><br><span class="line">用数组存边，但存的是双向边</span><br></pre></td></tr></table></figure>
+
+<p>当然，<em>Bellman-ford</em>算法也有判断负圈的功能</p>
+<blockquote>
+<p>超过了n次，它还可以更新，说明有负圈</p>
+</blockquote>
+<h3 id="SPFA-算法"><a href="#SPFA-算法" class="headerlink" title="SPFA 算法"></a>SPFA 算法</h3><blockquote>
+<p>用队列处理bellman-Ford</p>
+</blockquote>
+<p>由于在<em>Bellman-ford</em>算法中，由于是并行计算，所以有些结点在计算时，其实哪些不相邻的节点，他也在那里判断，但其实这样是十分低效的</p>
+<p>所以我们就要判断一下，把状态有更新的邻居才把他入队，把计算一个节点到起点s的最短路径的简称为<em>更新状态</em> ，而最后的<em>状态</em>就是我们要求的最短路径</p>
+<p>首先，我们来了解一下什么叫做<em>邻接表</em></p>
+<h4 id="邻接表（Adjacency-List）"><a href="#邻接表（Adjacency-List）" class="headerlink" title="邻接表（Adjacency List）"></a>邻接表（Adjacency List）</h4><p><strong>无向图 graph 表示</strong></p>
+<p>就类似于单链表，但是它既可以用结构体指针来搞，又可以用静态数组来整</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ECUST luoyongjun</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">1e6</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">105</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span></span><br><span class="line"><span class="hljs-keyword">int</span> from, to, w;</span><br><span class="line"><span class="hljs-comment">//边：起点from，终点to，权值w。from并没有用到，e[i]的i就是from</span></span><br><span class="line">    edge(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> c)&#123;from=a; to=b; w=c;&#125;</span><br><span class="line">    <span class="hljs-comment">//这里存的就是一个静态的</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;edge&gt; e[NUM];       <span class="hljs-comment">//e[i]：存第i个结点连接的所有的边</span></span><br><span class="line"><span class="hljs-keyword">int</span> n, m;</span><br><span class="line"><span class="hljs-keyword">int</span> pre[NUM];</span><br><span class="line"> <span class="hljs-comment">//记录前驱结点。pre[x]=y，在最短路径上，结点x的前一个结点是y</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_path</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s,<span class="hljs-keyword">int</span> t)</span> </span>&#123;    <span class="hljs-comment">//打印从s到t的最短路径</span></span><br><span class="line">   ;       <span class="hljs-comment">//内容与Bellman-Ford程序中的print_path()完全一样</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">spfa</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> dis[NUM];      <span class="hljs-comment">//记录所有结点到起点的距离</span></span><br><span class="line">    <span class="hljs-keyword">bool</span> inq[NUM];     <span class="hljs-comment">//inq[i] = true 表示结点i在队列中</span></span><br><span class="line">    <span class="hljs-keyword">int</span> Neg[NUM];      <span class="hljs-comment">//判断负圈,Negative loop</span></span><br><span class="line">    <span class="hljs-built_in">memset</span>(Neg, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Neg));</span><br><span class="line">    Neg[s] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) &#123; dis[i]=INF;  inq[i]=<span class="hljs-literal">false</span>; &#125;   <span class="hljs-comment">//初始化</span></span><br><span class="line">    dis[s] = <span class="hljs-number">0</span>;          <span class="hljs-comment">//起点到自己的距离是0</span></span><br><span class="line">    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Q;</span><br><span class="line">    Q.push(s);</span><br><span class="line">    inq[s] = <span class="hljs-literal">true</span>;        <span class="hljs-comment">//起点进队列</span></span><br><span class="line">    <span class="hljs-keyword">while</span>(!Q.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u = Q.front();</span><br><span class="line">        Q.pop();           <span class="hljs-comment">//队头出队</span></span><br><span class="line">        inq[u] = <span class="hljs-literal">false</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt; e[u].size(); i++) &#123;    <span class="hljs-comment">//检查结点u的所有邻居</span></span><br><span class="line">            <span class="hljs-keyword">int</span> v = e[u][i].to, w = e[u][i].w;</span><br><span class="line">            <span class="hljs-keyword">if</span> (dis[u]+w &lt; dis[v])  &#123;</span><br><span class="line"><span class="hljs-comment">//u的第i个邻居v，它借道u，到s更近</span></span><br><span class="line">               dis[v] = dis[u]+w; <span class="hljs-comment">//更新第i个邻居到s的距离</span></span><br><span class="line">                pre[v] = u;        <span class="hljs-comment">//如果有需要，记录路径</span></span><br><span class="line">                <span class="hljs-keyword">if</span>(!inq[v]) &#123;</span><br><span class="line"><span class="hljs-comment">//第i个邻居更新状态了，但是它不在队列中，把它放进队列</span></span><br><span class="line">                    inq[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">                    Q.push(v);</span><br><span class="line">                    Neg[v]++;</span><br><span class="line">                    <span class="hljs-keyword">if</span>(Neg[v] &gt; n) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;  <span class="hljs-comment">//出现负圈</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dis[n]);</span><br><span class="line">    <span class="hljs-comment">//print_path(s,n);   //如果有需要，打印路径</span></span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m)) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span> &amp;&amp; m==<span class="hljs-number">0</span>)     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)   e[i].clear();</span><br><span class="line">        <span class="hljs-keyword">while</span>(m--) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a,b,c;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">            e[a].push_back(edge(a,b,c));</span><br><span class="line"><span class="hljs-comment">//结点a的邻居，都放在node[a]里</span></span><br><span class="line">            e[b].push_back(edge(b,a,c));</span><br><span class="line">        &#125;</span><br><span class="line">        spfa(<span class="hljs-number">1</span>);    <span class="hljs-comment">//起点是1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="判断负圈"><a href="#判断负圈" class="headerlink" title="判断负圈"></a>判断负圈</h4><p>如果一个点进入队列超过n次，那就说明图中存在负圈</p>
+<blockquote>
+<p>虽然这个基于邻接表的代码已经非常好了，但是在极端的情况下，图会非常的大，用邻接表也会超出空间限制，这个时候就需要用到链式前向星</p>
+</blockquote>
+<h4 id="前向星"><a href="#前向星" class="headerlink" title="前向星"></a>前向星</h4><p>首先，我们理解一下什么叫做前向星</p>
+<blockquote>
+<p>前向星</p>
+</blockquote>
+<p><img src="E:%5C%E5%A4%A7%E4%B8%80%E7%A4%BE%E5%9B%A2%5CACM%5Cwalter%E6%A8%A1%E6%9D%BF%5C%E5%89%8D%E5%90%91%E6%98%9F.png" alt="前向星"></p>
+<blockquote>
+<p>前向星解释</p>
+</blockquote>
+<p><img src="E:%5C%E5%A4%A7%E4%B8%80%E7%A4%BE%E5%9B%A2%5CACM%5Cwalter%E6%A8%A1%E6%9D%BF%5C%E5%89%8D%E5%90%91%E6%98%9F%E6%A0%97%E5%AD%90.png" alt="前向星栗子"></p>
+<blockquote>
+<p>前向星和链式前向星不同</p>
+</blockquote>
+<p><img src="E:%5C%E5%A4%A7%E4%B8%80%E7%A4%BE%E5%9B%A2%5CACM%5Cwalter%E6%A8%A1%E6%9D%BF%5C%E5%89%8D%E5%90%91%E6%98%9F%E5%92%8C%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F%E4%B8%8D%E5%90%8C.png" alt="前向星和链式前向星不同"></p>
+<p>我们首先来看一下什么是前向星.</p>
+<p>前向星是一种特殊的边集数组,我们把边集数组中的每一条边按照起点从小到大排序,如果起点相同就按照终点从小到大排序,</p>
+<p>并记录下以某个点为起点的所有边在数组中的起始位置和存储长度,那么前向星就构造好了.</p>
+<p>用len[i]来记录所有以i为起点的边在数组中的存储长度.</p>
+<p>用head[i]记录以i为边集在数组中的第一个存储位置.</p>
+<p>那么对于下图:</p>
+<p>我们输入边的顺序为:</p>
+<p>1 2</p>
+<p>2 3</p>
+<p>3 4</p>
+<p>1 3</p>
+<p>4 1</p>
+<p>1 5</p>
+<p>4 5</p>
+<p>那么排完序后就得到:</p>
+<p>编号:     1      2      3      4      5      6      7</p>
+<p>起点u:    1      1      1      2      3      4      4</p>
+<p>终点v:    2      3      5      3      4      1      5</p>
+<p>得到:</p>
+<p>head[1] = 1    len[1] = 3</p>
+<p>head[2] = 4    len[2] = 1</p>
+<p>head[3] = 5    len[3] = 1</p>
+<p>head[4] = 6    len[4] = 2</p>
+<p>但是利用前向星会有排序操作,如果用快排时间至少为O(nlog(n))</p>
+<h4 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h4><p>如果用链式前向星,就可以避免排序.</p>
+<p>我们建立边结构体为:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> next;</span><br><span class="line"> 	<span class="hljs-keyword">int</span> to;</span><br><span class="line"> 	<span class="hljs-keyword">int</span> w;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其中edge[i].to表示第i条边的终点,edge[i].next表示与第i条边同起点的下一条边的存储位置,edge[i].w为边权值.</p>
+<p>另外还有一个数组head[],它是用来表示以i为起点的第一条边存储的位置,实际上你会发现这里的第一条边存储的位置其实</p>
+<p>在以i为起点的所有边的最后输入的那个编号.</p>
+<p>head[]数组一般初始化为-1,对于加边的add函数是这样的:</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> v,<span class="hljs-keyword">int</span> w)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    edge[cnt].w = w;</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].next = head[u];</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化cnt = 0,这样,现在我们还是按照上面的图和输入来模拟一下:</p>
+<p>edge[0].to = 2;     edge[0].next = -1;      head[1] = 0;</p>
+<p>edge[1].to = 3;     edge[1].next = -1;      head[2] = 1;</p>
+<p>edge[2].to = 4;     edge[2],next = -1;      head[3] = 2;</p>
+<p>edge[3].to = 3;     edge[3].next = 0;       head[1] = 3;</p>
+<p>edge[4].to = 1;     edge[4].next = -1;      head[4] = 4;</p>
+<p>edge[5].to = 5;     edge[5].next = 3;       head[1] = 5;</p>
+<p>edge[6].to = 5;     edge[6].next = 4;       head[4] = 6;</p>
+<p>很明显,head[i]保存的是以i为起点的所有边中编号最大的那个,而把这个当作顶点i的第一条起始边的位置.</p>
+<p>这样在遍历时是倒着遍历的,也就是说与输入顺序是相反的,不过这样不影响结果的正确性.</p>
+<p>比如以上图为例,以节点1为起点的边有3条,它们的编号分别是0,3,5   而head[1] = 5</p>
+<p>我们在遍历以u节点为起始位置的所有边的时候是这样的:</p>
+<p>for(int i=head[u];~i;i=edge[i].next)</p>
+<p>那么就是说先遍历编号为5的边,也就是head[1],然后就是edge[5].next,也就是编号3的边,然后继续edge[3].next,也</p>
+<p>就是编号0的边,可以看出是逆序的.</p>
+<blockquote>
+<p>整体代码</p>
+</blockquote>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ECUST luoyongjun</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = INT_MAX / <span class="hljs-number">10</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">1000005</span>;     <span class="hljs-comment">//一百万个点,一百万个边</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span>   <span class="hljs-comment">//边：edge[i]的i就是起点，终点to，权值w。下一个边next</span></span><br><span class="line"><span class="hljs-keyword">int</span> to, next, w;</span><br><span class="line">&#125;edge[NUM];</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, cnt;</span><br><span class="line"><span class="hljs-keyword">int</span> head[NUM];</span><br><span class="line"><span class="hljs-keyword">int</span> dis[NUM];            <span class="hljs-comment">//记录所有结点到起点的距离</span></span><br><span class="line"><span class="hljs-keyword">bool</span> inq[NUM];           <span class="hljs-comment">//inq[i] = true 表示结点i在队列中</span></span><br><span class="line"><span class="hljs-keyword">int</span> Neg[NUM];            <span class="hljs-comment">//判断负圈(Negative loop)</span></span><br><span class="line"><span class="hljs-keyword">int</span> pre[NUM];             <span class="hljs-comment">//记录前驱结点。</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_path</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s,<span class="hljs-keyword">int</span> t)</span> </span>&#123;   <span class="hljs-comment">//打印从s到t的最短路径</span></span><br><span class="line">   ;         <span class="hljs-comment">//内容与Bellman-Ford程序中的print_path()完全一样</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; NUM; ++i)&#123;</span><br><span class="line">        edge[i].next = <span class="hljs-number">-1</span>;</span><br><span class="line">        head[i] = <span class="hljs-number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cnt = <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addedge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span></span>&#123;      <span class="hljs-comment">//前向星存图</span></span><br><span class="line">   edge[cnt].to = v;</span><br><span class="line">   edge[cnt].w = w;</span><br><span class="line">   edge[cnt].next = head[u];</span><br><span class="line">   head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">spfa</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Neg, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Neg));</span><br><span class="line">    Neg[s] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) &#123; dis[i]=INF;  inq[i]=<span class="hljs-literal">false</span>; &#125;   <span class="hljs-comment">//初始化</span></span><br><span class="line">    dis[s] = <span class="hljs-number">0</span>;             <span class="hljs-comment">//起点到自己的距离是0</span></span><br><span class="line">    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Q;</span><br><span class="line">    Q.push(s);</span><br><span class="line">    inq[s] = <span class="hljs-literal">true</span>;           <span class="hljs-comment">//起点进队列</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span>(!Q.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u = Q.front(); Q.pop();    <span class="hljs-comment">//队头出队</span></span><br><span class="line">        inq[u] = <span class="hljs-literal">false</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[u]; ~i; i = edge[i].next) &#123;<span class="hljs-comment">//~i也可以写成 i!=-1</span></span><br><span class="line">            <span class="hljs-keyword">int</span> v = edge[i].to, w = edge[i].w;</span><br><span class="line">            <span class="hljs-keyword">if</span> (dis[u]+w &lt; dis[v]) &#123;</span><br><span class="line"><span class="hljs-comment">//u的第i个邻居v，它借道u，到s更近</span></span><br><span class="line">                dis[v] = dis[u]+w;   <span class="hljs-comment">//更新第i个邻居到s的距离</span></span><br><span class="line">                pre[v] = u;           <span class="hljs-comment">//如果有需要，记录路径</span></span><br><span class="line">                <span class="hljs-keyword">if</span>(!inq[v]) &#123;</span><br><span class="line">            <span class="hljs-comment">//邻居v更新状态了，但是它不在队列中，把它放进队列</span></span><br><span class="line">                    inq[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">                    Q.push(v);</span><br><span class="line">                    Neg[v]++;</span><br><span class="line">                    <span class="hljs-keyword">if</span>(Neg[v] &gt; n) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;    <span class="hljs-comment">//出现负圈</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,dis[n]);  <span class="hljs-comment">//从s的n的最短距离</span></span><br><span class="line">    <span class="hljs-comment">// print_path(s,n);     //如果有需要，打印路径</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m)) &#123;</span><br><span class="line">init();</span><br><span class="line">       	<span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span> &amp;&amp; m==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">       	<span class="hljs-keyword">while</span>(m--) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> u,v,w;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            addedge(u,v,w);</span><br><span class="line">            addedge(v,u,w);</span><br><span class="line">       	&#125;</span><br><span class="line">       	spfa(<span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="SPFA整体思路"><a href="#SPFA整体思路" class="headerlink" title="SPFA整体思路"></a>SPFA整体思路</h4><p>每个警察只需要在某个邻居警察通知有路径变化之后才进行计算，并把变化传递给别的邻居；如果没有收到邻居发来的变化信息，金叉不需要做任何动作</p>
+<h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>先找起点s的邻居，看看哪个邻居是最短的</p>
+<p>找到了最短的之后，再把多米诺骨牌分成两部分</p>
+<p>一部分还是从起点出发（不能直接从最近的邻居出发，因为邻居可能没有邻居，或者他的邻居其实是很远的），另一部分则是从刚刚最近的邻居出发</p>
+<p>然后一直循环这个过程</p>
+<blockquote>
+<p>如何删除某些点呢，我们要看，从两个路径去到同一个点，如果某个路径比较大，就可以直接把它删除了</p>
+</blockquote>
+<p><strong>每次找最近的结点</strong></p>
+<blockquote>
+<p>使用优先队列，prioity队列在STL中有</p>
+</blockquote>
+<p>但是STL没法做到丢弃这个操作，只能把某个节点删除时，就做个标记，做完标记之后，表示结点2已经处理好</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//ECUST luoyongjun</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">1e6</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">105</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> from, to, w;</span><br><span class="line"><span class="hljs-comment">//边：起点，终点，权值。起点from并没有用到，e[i]的i就是from</span></span><br><span class="line">    edge(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> c)&#123;from=a; to=b; w=c;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;edge&gt;e[NUM];  		 <span class="hljs-comment">//用于存储图</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">s_node</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> id, n_dis;           <span class="hljs-comment">//id：结点；n_dis：这个结点到起点的距离</span></span><br><span class="line">    s_node(<span class="hljs-keyword">int</span> b,<span class="hljs-keyword">int</span> c)&#123;id=b; n_dis=c;&#125;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> s_node &amp; a) <span class="hljs-keyword">const</span></span><br><span class="line">    &#123; <span class="hljs-keyword">return</span> n_dis &gt; a.n_dis;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">int</span> n,m;</span><br><span class="line"><span class="hljs-keyword">int</span> pre[NUM]; <span class="hljs-comment">//记录前驱结点</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_path</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s,<span class="hljs-keyword">int</span> t)</span>  </span>&#123;   <span class="hljs-comment">//打印从s到t的最短路径</span></span><br><span class="line">   ;         <span class="hljs-comment">//内容与Bellman-Ford程序中的print_path()完全一样</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line"><span class="hljs-keyword">int</span> s = <span class="hljs-number">1</span>;             <span class="hljs-comment">//起点s是1</span></span><br><span class="line">    <span class="hljs-keyword">int</span>  dis[NUM];         <span class="hljs-comment">//记录所有结点到起点的距离</span></span><br><span class="line">    <span class="hljs-keyword">bool</span> done[NUM]; <span class="hljs-comment">//done[i]=true表示到结点i的最短路径已经找到</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) &#123;dis[i]=INF; done[i]=<span class="hljs-literal">false</span>; &#125;    <span class="hljs-comment">//初始化</span></span><br><span class="line">    dis[s]=<span class="hljs-number">0</span>;                           <span class="hljs-comment">//起点到自己的距离是0</span></span><br><span class="line">    priority_queue &lt;s_node&gt; Q;       <span class="hljs-comment">//优先队列，存结点信息</span></span><br><span class="line">    Q.push(s_node(s, dis[s]));       <span class="hljs-comment">//起点进队列</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (!Q.empty())   &#123;</span><br><span class="line">        s_node u = Q.top();           <span class="hljs-comment">//pop出距起点s距离最小的结点u</span></span><br><span class="line">        Q.pop();</span><br><span class="line">        <span class="hljs-keyword">if</span>(done[u.id])</span><br><span class="line"><span class="hljs-comment">//丢弃已经找到最短路径的结点。即集合A中的结点</span></span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        done[u.id]= <span class="hljs-literal">true</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;e[u.id].size(); i++) &#123;  <span class="hljs-comment">//检查结点u的所有邻居</span></span><br><span class="line">            edge y = e[u.id][i];         <span class="hljs-comment">//u.id的第i个邻居是y.to</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(done[y.to])                <span class="hljs-comment">//丢弃已经找到最短路径的邻居结点</span></span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span> (dis[y.to] &gt; y.w + u.n_dis) &#123;</span><br><span class="line">                dis[y.to] = y.w + u.n_dis;</span><br><span class="line">                Q.push(s_node(y.to, dis[y.to]));</span><br><span class="line">     <span class="hljs-comment">//扩展新的邻居，放到优先队列中</span></span><br><span class="line">                pre[y.to]=u.id;  <span class="hljs-comment">//如果有需要，记录路径</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, dis[n]);</span><br><span class="line">    <span class="hljs-comment">// print_path(s,n);         //如果有需要，打印路径</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m)) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">0</span> &amp;&amp; m==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">            e[i].clear();</span><br><span class="line">        <span class="hljs-keyword">while</span> (m--) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> a,b,c;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            e[a].push_back(edge(a,b,c));</span><br><span class="line"><span class="hljs-comment">//结点a的邻居，都放在node[a]里</span></span><br><span class="line">            e[b].push_back(edge(b,a,c));</span><br><span class="line">        &#125;</span><br><span class="line">        dijkstra();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxnE = <span class="hljs-number">10005</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MaxnV = <span class="hljs-number">105</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> from, to, weight;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> &amp;Node A) &#123; <span class="hljs-keyword">return</span> A.weight &lt; weight; &#125;</span><br><span class="line">    <span class="hljs-comment">//构造函数</span></span><br><span class="line">&#125; node[MaxnE];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> dis[MaxnV];</span><br><span class="line"><span class="hljs-keyword">bool</span> vi[MaxnV];</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;Node&gt; v[MaxnV];</span><br><span class="line">priority_queue&lt;<span class="hljs-built_in">vector</span>&lt;Node&gt;&gt;; <span class="hljs-comment">//</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= MaxnV; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dis[i] = INF;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dijstral</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 把队列里面最短的边拿出来</span></span><br><span class="line">    <span class="hljs-comment">// 这条边对应的点用起来</span></span><br><span class="line">    <span class="hljs-comment">// 遍历这个结点的边</span></span><br><span class="line">    <span class="hljs-comment">// while队列不为空</span></span><br><span class="line">    <span class="hljs-comment">// 一直遍历他</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n, m;</span><br><span class="line">    <span class="hljs-keyword">while</span> (~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>, &amp;n, &amp;m) &amp;&amp; n + m)</span><br><span class="line">    &#123;</span><br><span class="line">        init();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d %d"</span>, &amp;node[i].from, &amp;node[i].to, &amp;node[i].weight);</span><br><span class="line">            v[node[i].from].push_back(Node()) <span class="hljs-comment">// 放到结构体函数里面去</span></span><br><span class="line">        &#125;</span><br><span class="line">        dijstral();</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; dis[n] &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h1><ol>
+<li>邻接矩阵</li>
+</ol>
+<p>dijkstra</p>
+<p>单起点的最短路径</p>
+<p>v0到各个城市的最短路径</p>
+<p>按照最短路的路径长度递增的次序，依次求得原点</p>
+<p>最短的最短路径，再找第二短的最短路径</p>
+<ol>
+<li>最短的最短路径，首先它一定是和杭州直接相连的，并且是最短的那个</li>
+<li>第二短的最短路径，只有经过最短的过去或者是直达的，（不可能经过其他城市，因为如果经过其他城市的话，其他城市就是第一次的最短路径了）</li>
+<li>修改起点到各个点的距离，松弛操作。600变500，绳子变松了</li>
+<li>定义一个数组，dis数据，表示起点到各个点的距离</li>
+<li>松弛操作<ol>
+<li>一遍松弛结束，就找一个最短的值，为什么这样算找到第二个（如果我有一个结点，虽然第一次会远一点，但是第二条会很近）</li>
+<li>比较两个值，一个是原来的，一个是转换结点的</li>
+</ol>
+</li>
+<li>多米诺骨牌，先碰到的先放进队列里面，先碰到的话就是最短的路径，其实就是最快的地方</li>
+<li>为什么求最短距离要遍历全部的？因为有可能你想求的是最远的那一个</li>
+</ol>
+<p>这个人叫丁爸编程 </p>
+<p>08年11年前，那是一个春天</p>
+<p>0xfff</p>
+<p>int的最大值</p>
+<p>28个1，31个1</p>
+<p>2的31-1</p>
+<p>dis起点到各个城市的最短距离</p>
+<p>没有边就不需要再做了</p>
+<p>剩余的所有城市都是不连通的</p>
+<p>start改成now更好</p>
+<p>处理过就标记为0，就不用再处理了</p>
+<p>几十个最短路径，三十个题，学习就是这样的，以前五笔很快的，现在全拼很智能。一辈人有一辈人的方法</p>
+<p>加一个点，虚拟的点，就是单源单终点的问题</p>
+<p>原来假设有100个点</p>
+<p>不仅输出最短路径还要你输出怎么走的</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ACMer/">ACMer</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>Alipay</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/DNtxHmiyswXazhn.jpg" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="https://i.loli.net/2019/10/20/Rjo9TbNc5nKmQFs.png" alt="Wechat"></div>
+</a>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/21/并查集/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">并查集</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/21/递归专题/">
+                <span class="level-item">递归专题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/themes/icarus/source/images/WalterJ726.jpg" alt="WalterJ726">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        WalterJ726
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Geek
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Exchange in Hangzhou</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        70
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        15
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        14
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/WalterJ726">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://weibo.com/p/1005055187006158" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">微博</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">weibo.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/ACMer/">
+            <span class="level-start">
+                <span class="level-item">ACMer</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/ACM入门/">
+            <span class="level-start">
+                <span class="level-item">ACM入门</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/String/">
+            <span class="level-start">
+                <span class="level-item">String</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/动态规划/">
+            <span class="level-start">
+                <span class="level-item">动态规划</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/图论/">
+            <span class="level-start">
+                <span class="level-item">图论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/多任务编程/">
+            <span class="level-start">
+                <span class="level-item">多任务编程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/大二上/">
+            <span class="level-start">
+                <span class="level-item">大二上</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索/">
+            <span class="level-start">
+                <span class="level-item">搜索</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/搜索二分/">
+            <span class="level-start">
+                <span class="level-item">搜索二分</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/操作系统/">
+            <span class="level-start">
+                <span class="level-item">操作系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/数论/">
+            <span class="level-start">
+                <span class="level-item">数论</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/电脑配置/">
+            <span class="level-start">
+                <span class="level-item">电脑配置</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/网络通信概述/">
+            <span class="level-start">
+                <span class="level-item">网络通信概述</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/递推与DP/">
+            <span class="level-start">
+                <span class="level-item">递推与DP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/高级数据结构/">
+            <span class="level-start">
+                <span class="level-item">高级数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/ACM-learning-process/" style="font-size: 15px;">ACM learning process</a> <a href="/tags/ACMer/" style="font-size: 20px;">ACMer</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/STL/" style="font-size: 10px;">STL</a> <a href="/tags/TCP/" style="font-size: 10px;">TCP</a> <a href="/tags/UDP/" style="font-size: 10px;">UDP</a> <a href="/tags/多任务/" style="font-size: 10px;">多任务</a> <a href="/tags/搭建网站/" style="font-size: 10px;">搭建网站</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/时间表/" style="font-size: 10px;">时间表</a> <a href="/tags/编程环境/" style="font-size: 10px;">编程环境</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/寒假时间安排/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T07:24:08.412Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/寒假时间安排/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/11/机器学习开营模式/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-11T06:00:53.512Z">2020-02-11</time></div>
+                    <a href="/2020/02/11/机器学习开营模式/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T14:22:56.225Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯8 （枚举模拟排序习题课）/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/09/蓝桥杯14讲/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-09T06:33:33.399Z">2020-02-09</time></div>
+                    <a href="/2020/02/09/蓝桥杯14讲/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/电脑平时技巧/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T01:51:02.744Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/电脑平时技巧/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM/">
+                        <span class="tag">ACM</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACM-learning-process/">
+                        <span class="tag">ACM learning process</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ACMer/">
+                        <span class="tag">ACMer</span>
+                        <span class="tag is-grey">14</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Linux/">
+                        <span class="tag">Linux</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/MySQL/">
+                        <span class="tag">MySQL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/STL/">
+                        <span class="tag">STL</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/TCP/">
+                        <span class="tag">TCP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/UDP/">
+                        <span class="tag">UDP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多任务/">
+                        <span class="tag">多任务</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搭建网站/">
+                        <span class="tag">搭建网站</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据库/">
+                        <span class="tag">数据库</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/时间表/">
+                        <span class="tag">时间表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/编程环境/">
+                        <span class="tag">编程环境</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="图的最短路径" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 WalterJ726&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
